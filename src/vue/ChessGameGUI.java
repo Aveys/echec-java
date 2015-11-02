@@ -115,13 +115,17 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
     @Override
     public void update(Observable o, Object arg) {
         ChessGame game = (ChessGame) o;
+        for (int i = 0; i<64; i++){
+            JPanel panel = (JPanel) chessBoard.getComponent(i);
+            panel.removeAll();
+        }
         List<PieceIHM> list = game.getPiecesIHM();
         for(PieceIHM piece : list){
             String name = piece.getTypePiece();
             Couleur couleur = piece.getCouleur();
             for (Coord coordo : piece.getList()){
                 JLabel pieceIHM = new JLabel(new ImageIcon(ChessImageProvider.getImageFile(name,couleur)));
-                JPanel panel = (JPanel) chessBoard.getComponent((coordo.x) * (coordo.y));
+                JPanel panel = (JPanel) chessBoard.findComponentAt((coordo.x*75), (coordo.y*75));
                 panel.add(pieceIHM);
             }
         }

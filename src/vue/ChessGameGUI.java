@@ -48,21 +48,6 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
                 square.setBackground( i % 2 == 0 ? Color.white : Color.black );
         }
 
-        //Add a few pieces to the board
-
-        JLabel piece = new JLabel( new ImageIcon("./images/pionNoirS.png"));
-        JPanel panel = (JPanel)chessBoard.getComponent(1);
-        panel.add(piece);
-        piece = new JLabel(new ImageIcon("./images/pionNoirS.png"));
-        panel = (JPanel)chessBoard.getComponent(15);
-        panel.add(piece);
-        piece = new JLabel(new ImageIcon("./images/roiBlancS.png"));
-        panel = (JPanel)chessBoard.getComponent(16);
-        panel.add(piece);
-        piece = new JLabel(new ImageIcon("./images/roiNoirS.png"));
-        panel = (JPanel)chessBoard.getComponent(20);
-        panel.add(piece);
-
     }
 
     public void mousePressed(MouseEvent e){
@@ -109,6 +94,7 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
         chessPiece.setVisible(true);
     }
 
+
     public void mouseClicked(MouseEvent e) {
 
     }
@@ -121,14 +107,7 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new TestChessIHM();
-        frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE );
-        frame.pack();
-        frame.setResizable(true);
-        frame.setLocationRelativeTo( null );
-        frame.setVisible(true);
-    }
+
 
     @Override
     public void update(Observable o, Object arg) {

@@ -1,3 +1,5 @@
+package tools;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -42,8 +44,8 @@ public class ChessPieceFactory {
 						String pieceName = initCouleur + (ChessPiecePos.values()[i].nom).substring(0, 2) + (j+1);
 						Coord pieceCoord = ChessPiecePos.values()[i].coords[j];
 
-						pieces.add((Pieces) Introspection.newInstance (className,
-								new Object[] {pieceName, pieceCouleur, pieceCoord}));
+						pieces.add((Pieces) Introspection.newInstance(className,
+								new Object[]{pieceName, pieceCouleur, pieceCoord}));
 					}
 				}
 			}

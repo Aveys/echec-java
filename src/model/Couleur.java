@@ -1,3 +1,5 @@
+package model;
+
 /**
  * @author francoise.perrin
  * Inspiration Jacques SARAYDARYAN, Adrien GUENARD *

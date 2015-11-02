@@ -1,3 +1,5 @@
+package launcher;
+
 import model.observable.ChessGame;
 import vue.ChessGameCmdLine;
 import controler.controlerLocal.ChessGameControler;

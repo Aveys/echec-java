@@ -1,6 +1,10 @@
+package model;
+
 import java.util.LinkedList;
 import java.util.List;
 
+import model.Coord;
+import model.Couleur;
 import tools.ChessPieceFactory;
 import tools.ChessSinglePieceFactory;
 

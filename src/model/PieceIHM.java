@@ -1,3 +1,8 @@
+package model;
+
+import model.Coord;
+import model.Couleur;
+
 import java.util.LinkedList;
 import java.util.List;
 

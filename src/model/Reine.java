@@ -1,8 +1,14 @@
+package model;
+
+import model.AbstractPiece;
+import model.Coord;
+import model.Couleur;
+
 /**
  * @author francoise.perrin
  * Inspiration Jacques SARAYDARYAN, Adrien GUENARD *
  */
-public class Tour extends AbstractPiece {
+public class Reine extends AbstractPiece {
 	
 
 	/**
@@ -10,7 +16,7 @@ public class Tour extends AbstractPiece {
 	 * @param couleur_de_piece
 	 * @param coord
 	 */
-	public Tour(String name,Couleur couleur_de_piece, Coord coord) {
+	public Reine(String name, Couleur couleur_de_piece, Coord coord) {
 		super(name,couleur_de_piece, coord);
 	}
 
@@ -22,13 +28,12 @@ public class Tour extends AbstractPiece {
 		
 		boolean ret = false;
 		
-		if ((yFinal == this.getY()) || (xFinal == this.getX())) {
-			ret = true;
+		if (Math.abs(yFinal - this.getY()) == Math.abs(xFinal - this.getX())
+				|| ((yFinal == this.getY()) || (xFinal == this.getX()))) {
+			ret =  true;
 		}
 		
 		return ret;
 	}
 
-
-	
 }

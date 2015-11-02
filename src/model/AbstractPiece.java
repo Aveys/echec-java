@@ -1,3 +1,5 @@
+package model;
+
 /**
  * @author francoise.perrin
  * Inspiration Jacques SARAYDARYAN, Adrien GUENARD
@@ -53,7 +55,7 @@ public abstract class AbstractPiece implements Pieces {
 	 */
 	public boolean move(int x, int y){
 		boolean ret = false;
-		if(Coord.coordonnees_valides(x,y)){
+		if(Coord.coordonnees_valides(x, y)){
 			this.x=x;
 			this.y=y;
 			ret = true;

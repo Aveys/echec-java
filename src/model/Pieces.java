@@ -1,3 +1,7 @@
+package model;
+
+import model.Couleur;
+
 /**
  * @author francoise.perrin
  * Inspiration Jacques SARAYDARYAN, Adrien GUENARD *

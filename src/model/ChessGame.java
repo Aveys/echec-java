@@ -1,5 +1,6 @@
 package model;
 
+import java.util.List;
 import java.util.Observable;
 
 /**
@@ -12,6 +13,8 @@ public class ChessGame extends Observable{
     public ChessGame(){
 
         this.echiquier = new Echiquier();
+        this.setChanged();
+        this.notifyObservers();
     }
 
     public boolean move (int xInit, int yInit, int xFinal, int yFinal){
@@ -23,6 +26,9 @@ public class ChessGame extends Observable{
         }
 
         if(moved) echiquier.switchJoueur();
+
+        this.setChanged();
+        this.notifyObservers();
 
         return moved;
     }
@@ -41,6 +47,10 @@ public class ChessGame extends Observable{
 
     public String toString(){
         return echiquier.toString();
+    }
+
+    public List<PieceIHM> getPiecesIHM(){
+        return echiquier.getPiecesIHM();
     }
 
 

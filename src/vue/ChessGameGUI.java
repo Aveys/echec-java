@@ -1,12 +1,18 @@
 package vue;
 
+import model.ChessGame;
+import model.Coord;
+import model.Couleur;
+import model.PieceIHM;
+import tools.ChessImageProvider;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.*;
+import java.util.List;
 
 /**
  * Created by lbl on 02/11/2015.
@@ -106,11 +112,20 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
     public void mouseExited(MouseEvent e) {
 
     }
-
-
-
     @Override
     public void update(Observable o, Object arg) {
-
+        ChessGame game = (ChessGame) o;
+        List<PieceIHM> list = game.getPiecesIHM();
+        for(PieceIHM piece : list){
+            String name = piece.getTypePiece();
+            Couleur couleur = piece.getCouleur();
+            for (Coord coordo : piece.getList()){
+                JLabel pieceIHM = new JLabel(new ImageIcon(ChessImageProvider.getImageFile(name, couleur)));
+                JPanel panel = (JPanel) chessBoard.getComponent((coordo.x) * (coordo.y));
+                panel.add(pieceIHM);
+            }
+        }
+        chessBoard.repaint();
     }
+
 }

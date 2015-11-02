@@ -23,7 +23,6 @@ public class LauncherGUI {
         chessGameGUI = new ChessGameGUI();
         chessGame.addObserver(chessGameGUI);
 
-
         chessGameGUI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         chessGameGUI.pack();
         chessGameGUI.setResizable(true);

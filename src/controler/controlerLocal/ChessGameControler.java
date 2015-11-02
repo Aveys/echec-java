@@ -37,4 +37,9 @@ public class ChessGameControler implements ChessGameControlers{
 	public Couleur getColorCurrentPlayer() {
 		return game.getColorCurrentPlayer();
 	}
+
+	@Override
+	public String toString() {
+		return game.toString();
+	}
 }

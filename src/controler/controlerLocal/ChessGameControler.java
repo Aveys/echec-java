@@ -12,7 +12,11 @@ import model.Couleur;
 
 public class ChessGameControler implements ChessGameControlers{
 
-	public ChessGame game = new ChessGame();
+	private ChessGame game ;
+
+	public ChessGameControler(ChessGame game) {
+		this.game = game;
+	}
 
 	@Override
 	public boolean move(Coord initCoord, Coord finalCoord) {

@@ -2,7 +2,6 @@ package vue;
 
 import controler.controlerLocal.ChessGameControler;
 import model.Coord;
-import model.observable.ChessGame;
 
 
 

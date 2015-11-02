@@ -21,9 +21,9 @@ public class ChessGame extends Observable{
         if(echiquier.isMoveOk(xInit,yInit,xFinal,yFinal)){
             moved = echiquier.move(xInit,yInit,xFinal,yFinal);
         }
-        else{
-            System.out.println("Mouvement impossible");
-        }
+
+        if(moved) echiquier.switchJoueur();
+
         return moved;
     }
 

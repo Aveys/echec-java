@@ -1,6 +1,7 @@
 package tools;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import model.Couleur;
@@ -43,7 +44,11 @@ public class ChessImageProvider {
 		key = pieceType + pieceCouleur.name();
 		value = mapImage.get(key);
 		File g=new File("");
-		ret = g.getAbsolutePath()+"\\images\\" + value;
+		try {
+			ret = g.getCanonicalPath()+"/images/" + value;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return ret;		
 	}
 

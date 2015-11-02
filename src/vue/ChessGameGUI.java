@@ -120,12 +120,12 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
             String name = piece.getTypePiece();
             Couleur couleur = piece.getCouleur();
             for (Coord coordo : piece.getList()){
-                JLabel pieceIHM = new JLabel(new ImageIcon(ChessImageProvider.getImageFile(name, couleur)));
+                JLabel pieceIHM = new JLabel(new ImageIcon(ChessImageProvider.getImageFile(name,couleur)));
                 JPanel panel = (JPanel) chessBoard.getComponent((coordo.x) * (coordo.y));
                 panel.add(pieceIHM);
             }
         }
-        chessBoard.repaint();
+        chessBoard.revalidate();
     }
 
 }

@@ -15,12 +15,13 @@ public class LauncherGUI {
     public static void main(String[] args) {
 
         ChessGame chessGame;
-        JFrame chessGameGUI;
+        ChessGameGUI chessGameGUI;
         ChessGameControler chessGameControler;
 
         chessGame = new ChessGame();
         chessGameControler = new ChessGameControler(chessGame);
         chessGameGUI = new ChessGameGUI();
+        chessGame.addObserver(chessGameGUI);
 
 
         chessGameGUI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

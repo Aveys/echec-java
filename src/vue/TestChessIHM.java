@@ -4,6 +4,7 @@ import tools.ChessImageProvider;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import javax.swing.*;
 
 /**
@@ -48,9 +49,9 @@ public class TestChessIHM extends JFrame implements MouseListener, MouseMotionLi
         //Add a few pieces to the board
 
         JLabel piece = new JLabel( new ImageIcon("./images/pionNoirS.png"));
-        JPanel panel = (JPanel)chessBoard.getComponent(0);
+        JPanel panel = (JPanel)chessBoard.getComponent(1);
         panel.add(piece);
-       /* piece = new JLabel(new ImageIcon("./images/pionNoirS.png"));
+        piece = new JLabel(new ImageIcon("./images/pionNoirS.png"));
         panel = (JPanel)chessBoard.getComponent(15);
         panel.add(piece);
         piece = new JLabel(new ImageIcon("./images/roiBlancS.png"));
@@ -58,7 +59,7 @@ public class TestChessIHM extends JFrame implements MouseListener, MouseMotionLi
         panel.add(piece);
         piece = new JLabel(new ImageIcon("./images/roiNoirS.png"));
         panel = (JPanel)chessBoard.getComponent(20);
-        panel.add(piece);*/
+        panel.add(piece);
 
     }
 

@@ -5,6 +5,8 @@ import model.ChessGame;
 import model.Coord;
 import model.Couleur;
 
+import javax.swing.*;
+
 /**
  * Created by arthurveys on 02/11/15 for ProjetDP2.
  */
@@ -20,7 +22,10 @@ public class ChessGameControler implements ChessGameControlers{
 
 	@Override
 	public boolean move(Coord initCoord, Coord finalCoord) {
-		return game.move(initCoord.x,initCoord.y,finalCoord.x,finalCoord.y);
+		Boolean moved = game.move(initCoord.x,initCoord.y,finalCoord.x,finalCoord.y);
+		System.out.println(game.getMessage());
+
+		return moved;
 	}
 
 	@Override

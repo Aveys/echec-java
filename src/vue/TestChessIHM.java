@@ -13,6 +13,7 @@ public class TestChessIHM extends JFrame implements MouseListener, MouseMotionLi
     JLayeredPane layeredPane;
     JPanel chessBoard;
     JLabel chessPiece;
+    Point memoChessPiece;
     int xAdjustment;
     int yAdjustment;
 
@@ -69,6 +70,8 @@ public class TestChessIHM extends JFrame implements MouseListener, MouseMotionLi
         if (c instanceof JPanel)
             return;
 
+        memoChessPiece = new Point(e.getX()/75,e.getY()/75);
+
         Point parentLocation = c.getParent().getLocation();
         xAdjustment = parentLocation.x - e.getX();
         yAdjustment = parentLocation.y - e.getY();
@@ -91,7 +94,16 @@ public class TestChessIHM extends JFrame implements MouseListener, MouseMotionLi
         if(chessPiece == null) return;
 
         chessPiece.setVisible(false);
+
         Component c =  chessBoard.findComponentAt(e.getX(), e.getY());
+        System.out.println("OldX : " + memoChessPiece.x);
+        System.out.println("OldY : " + memoChessPiece.y);
+        System.out.println("NewX : " + e.getX() / 75);
+        System.out.println("NewY : " + e.getY() / 75);
+
+        if(c == null){
+            chessPiece.setLocation(memoChessPiece.x * 75, memoChessPiece.y * 75);
+        }
 
         if (c instanceof JLabel){
             Container parent = c.getParent();
@@ -109,11 +121,14 @@ public class TestChessIHM extends JFrame implements MouseListener, MouseMotionLi
     public void mouseClicked(MouseEvent e) {
 
     }
+
     public void mouseMoved(MouseEvent e) {
     }
+
     public void mouseEntered(MouseEvent e){
 
     }
+
     public void mouseExited(MouseEvent e) {
 
     }

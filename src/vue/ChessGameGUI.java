@@ -1,5 +1,6 @@
 package vue;
 
+import controler.controlerLocal.ChessGameControler;
 import model.ChessGame;
 import model.Coord;
 import model.Couleur;
@@ -19,13 +20,17 @@ import java.util.List;
  */
 public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionListener,Observer {
 
+    ChessGameControler controler;
     JLayeredPane layeredPane;
     JPanel chessBoard;
     JLabel chessPiece;
     int xAdjustment;
     int yAdjustment;
+    Coord memoChessPiece;
 
-    public ChessGameGUI(){
+    public ChessGameGUI(ChessGameControler controler){
+        this.controler = controler;
+
         Dimension boardSize = new Dimension(600, 600);
 
         //  Use a Layered Pane for this this application
@@ -63,6 +68,8 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
         if (c instanceof JPanel)
             return;
 
+        memoChessPiece = new Coord(e.getX()/75,e.getY()/75);
+
         Point parentLocation = c.getParent().getLocation();
         xAdjustment = parentLocation.x - e.getX();
         yAdjustment = parentLocation.y - e.getY();
@@ -85,19 +92,9 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
         if(chessPiece == null) return;
 
         chessPiece.setVisible(false);
-        Component c =  chessBoard.findComponentAt(e.getX(), e.getY());
 
-        if (c instanceof JLabel){
-            Container parent = c.getParent();
-            parent.remove(0);
-            parent.add( chessPiece );
-        }
-        else {
-            Container parent = (Container)c;
-            parent.add( chessPiece );
-        }
+       controler.move(memoChessPiece,new Coord(e.getX() / 75,e.getY() / 75));
 
-        chessPiece.setVisible(true);
     }
 
 
@@ -112,6 +109,7 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
     public void mouseExited(MouseEvent e) {
 
     }
+
     @Override
     public void update(Observable o, Object arg) {
         ChessGame game = (ChessGame) o;
@@ -120,12 +118,13 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
             panel.removeAll();
         }
         List<PieceIHM> list = game.getPiecesIHM();
+
         for(PieceIHM piece : list){
             String name = piece.getTypePiece();
             Couleur couleur = piece.getCouleur();
             for (Coord coordo : piece.getList()){
                 JLabel pieceIHM = new JLabel(new ImageIcon(ChessImageProvider.getImageFile(name,couleur)));
-                JPanel panel = (JPanel) chessBoard.findComponentAt((coordo.x*75), (coordo.y*75));
+                JPanel panel = (JPanel) chessBoard.findComponentAt((coordo.x * 75), (coordo.y * 75));
                 panel.add(pieceIHM);
             }
         }

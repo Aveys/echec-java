@@ -20,7 +20,7 @@ public class LauncherGUI {
 
         chessGame = new ChessGame();
         chessGameControler = new ChessGameControler(chessGame);
-        chessGameGUI = new ChessGameGUI();
+        chessGameGUI = new ChessGameGUI(chessGameControler);
         chessGame.addObserver(chessGameGUI);
 
         chessGameGUI.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -28,9 +28,9 @@ public class LauncherGUI {
         chessGameGUI.setResizable(true);
         chessGameGUI.setLocationRelativeTo( null );
         chessGameGUI.setVisible(true);
+        chessGame.init();
 
-
-        new ChessGameCmdLine(chessGameControler);
+        //new ChessGameCmdLine(chessGameControler);
     }
 
 }

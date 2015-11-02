@@ -33,6 +33,11 @@ public class ChessGame extends Observable{
         return moved;
     }
 
+    public void init(){
+        this.setChanged();
+        this.notifyObservers();
+    }
+
     public boolean isEnd(){
         return echiquier.isEnd();
     }

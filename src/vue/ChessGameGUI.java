@@ -7,6 +7,7 @@ import model.Coord;
 import model.Couleur;
 import model.PieceIHM;
 import tools.ChessImageProvider;
+import tools.ObserverObservable.ObserverCustom;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +20,7 @@ import java.util.List;
 /**
  * Created by lbl on 02/11/2015.
  */
-public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionListener,Observer {
+public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionListener,ObserverCustom {
 
     ChessGameControlers controler;
     JLayeredPane layeredPane;
@@ -112,15 +113,15 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
     }
 
     @Override
-    public void update(Observable o, Object arg) {
-        ChessGame game = (ChessGame) o;
+    public void update(List<PieceIHM> listPieces) {
+
+        //Remove all the pieces of the board
         for (int i = 0; i<64; i++){
             JPanel panel = (JPanel) chessBoard.getComponent(i);
             panel.removeAll();
         }
-        List<PieceIHM> list = game.getPiecesIHM();
 
-        for(PieceIHM piece : list){
+        for(PieceIHM piece : listPieces){
             String name = piece.getTypePiece();
             Couleur couleur = piece.getCouleur();
             for (Coord coordo : piece.getList()){
@@ -130,6 +131,15 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
             }
         }
         chessBoard.revalidate();
+    }
+
+
+    public void display(){
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.pack();
+        this.setResizable(true);
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
     }
 
 }

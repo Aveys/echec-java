@@ -1,21 +1,21 @@
 package model;
 
-import java.io.Serializable;
+import tools.ObserverObservable.ObservableCustom;
+import tools.ObserverObservable.ObserverCustom;
+
 import java.util.List;
 import java.util.Observable;
 
 /**
  * Created by arthurveys on 02/11/15 for ProjetDP2.
  */
-public class ChessGame extends Observable{
+public class ChessGame extends ObservableCustom{
 
     private Echiquier echiquier;
 
     public ChessGame(){
 
         this.echiquier = new Echiquier();
-        this.setChanged();
-        this.notifyObservers();
     }
 
     public boolean move (int xInit, int yInit, int xFinal, int yFinal){
@@ -28,15 +28,13 @@ public class ChessGame extends Observable{
 
         if(moved) echiquier.switchJoueur();
 
-        this.setChanged();
-        this.notifyObservers();
+        this.notifyAllObserver();
 
         return moved;
     }
 
     public void init(){
-        this.setChanged();
-        this.notifyObservers();
+        this.notifyAllObserver();
     }
 
     public boolean isEnd(){
@@ -60,4 +58,10 @@ public class ChessGame extends Observable{
     }
 
 
+    @Override
+    public void notifyAllObserver() {
+        for(ObserverCustom obs : this.listObserver){
+            obs.update(getPiecesIHM());
+        }
+    }
 }

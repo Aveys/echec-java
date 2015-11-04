@@ -1,11 +1,13 @@
 package launcher;
 
-import controler.controlerNetwork.ChessGameControler;
-import model.ChessGame;
-import network.ServerConnector;
-import vue.ChessGameGUI;
+import network.AcceptConnection;
+import network.Connexion;
 
 import javax.swing.*;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
 /**
  * Created by arthurveys on 04/11/15 for ProjetDP2.
@@ -14,34 +16,44 @@ public class LauncherGUINetwork {
 
 	public static void main(String[] args) {
 
-		ChessGame chessGame;
-		ChessGameGUI chessGameGUI;
-		ChessGameControler chessGameControler;
+		ServerSocket ss;
+		Socket socket;
 
-		chessGame = new ChessGame();
-		chessGameControler = new ChessGameControler(chessGame);
-		chessGameGUI = new ChessGameGUI(chessGameControler);
-		chessGame.addObserver(chessGameGUI);
+
+
 
 		Object[] options = { "Serveur", "Client" };
+
 		int info = JOptionPane.showOptionDialog(null, "Jouer en tant que serveur (Blanc) ou client(noir) ?", "Info",
 				JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
 				null, options, options[0]);
 		if(info == 0){
-			ServerConnector serv = new ServerConnector(8181,chessGameControler);
+			try {
+				ss = new ServerSocket(2009);
+				System.out.println("Le serveur est à l'écoute du port "+ss.getLocalPort());
+
+				new AcceptConnection(ss);
+
+			} catch (IOException e) {
+				System.err.println("Le port est déjà utilisé !");
+			}
 
 		}
 		else {
+			try {
 
+				System.out.println("Demande de connexion");
+				socket = new Socket("127.0.0.1",2009);
+				System.out.println("Connexion établie avec le serveur, authentification :"); // Si le message s'affiche c'est que je suis connecté
+
+				new Connexion(socket);
+
+			} catch (UnknownHostException e) {
+				System.err.println("Impossible de se connecter à l'adresse ");
+			} catch (IOException e) {
+				System.err.println("Aucun serveur à l'écoute du port ");
+			}
 		}
-		System.out.println("INFO:"+info);
-
-		chessGameGUI.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		chessGameGUI.pack();
-		chessGameGUI.setResizable(true);
-		chessGameGUI.setLocationRelativeTo( null );
-		chessGameGUI.setVisible(true);
-		chessGame.init();
 
 		//new ChessGameCmdLine(chessGameControler);
 	}

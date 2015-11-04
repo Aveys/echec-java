@@ -12,7 +12,8 @@ import javax.swing.*;
  */
 public class LauncherGUI {
 
-    public static void main(String[] args) {
+    public LauncherGUI() {
+
 
         ChessGame chessGame;
         ChessGameGUI chessGameGUI;

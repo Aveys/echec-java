@@ -10,6 +10,8 @@ import tools.ChessImageProvider;
 import tools.ObserverObservable.ObserverCustom;
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;

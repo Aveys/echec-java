@@ -1,7 +1,9 @@
 package network;
 
 import controler.controlerNetwork.ChessGameControler;
+import model.ChessGame;
 import model.Coord;
+import vue.ChessGameGUI;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,31 +11,34 @@ import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class AcceptConnection implements Runnable{
+public class AcceptConnection{
 
-	ServerSocket ss;
-	ChessGameControler controler;
+	private ServerSocket socketserver = null;
+	private Socket socket = null;
 
-	public AcceptConnection(ServerSocket pss, ChessGameControler chessGameControler) {
-		ss = pss;
+	public Thread t1;
+	public AcceptConnection(ServerSocket ss){
 
-	}
+		socketserver = ss;
 
-	@Override
-	public void run() {
 		try {
-			while(true){
-				Socket socket = ss.accept();
-				BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-				String msg = in.readLine();
-				String[] splitString = msg.split(":");
-				Coord initCoord=new Coord(Integer.parseInt(splitString[1]),Integer.parseInt(splitString[2]));
-				Coord finalCoord=new Coord(Integer.parseInt(splitString[2]),Integer.parseInt(splitString[4]));
-				controler.moveNetwork(initCoord,finalCoord);
-			}
+				socket = socketserver.accept();
+				System.out.println("Un joueur s'est connecté");
+
+
+				ChessGame chessGame;
+				ChessGameGUI chessGameGUI;
+				ChessGameControler chessGameControler;
+				chessGame = new ChessGame();
+				chessGameControler = new ChessGameControler(chessGame,socket);
+				chessGameGUI = new ChessGameGUI(chessGameControler);
+				chessGame.addObserver(chessGameGUI);
+				chessGameGUI.display();
+				chessGame.init();
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
+
 }

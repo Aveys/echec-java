@@ -1,5 +1,6 @@
 package vue;
 
+import controler.ChessGameControlers;
 import controler.controlerLocal.ChessGameControler;
 import model.ChessGame;
 import model.Coord;
@@ -20,7 +21,7 @@ import java.util.List;
  */
 public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionListener,Observer {
 
-    ChessGameControler controler;
+    ChessGameControlers controler;
     JLayeredPane layeredPane;
     JPanel chessBoard;
     JLabel chessPiece;
@@ -28,7 +29,7 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
     int yAdjustment;
     Coord memoChessPiece;
 
-    public ChessGameGUI(ChessGameControler controler){
+    public ChessGameGUI(ChessGameControlers controler){
         this.controler = controler;
 
         Dimension boardSize = new Dimension(600, 600);
@@ -93,7 +94,7 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 
         chessPiece.setVisible(false);
 
-       controler.move(memoChessPiece,new Coord(e.getX() / 75,e.getY() / 75));
+        controler.move(memoChessPiece, new Coord(e.getX() / 75, e.getY() / 75));
 
     }
 

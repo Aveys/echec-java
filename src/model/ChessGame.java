@@ -20,6 +20,8 @@ public class ChessGame extends ObservableCustom{
 
     public boolean move (int xInit, int yInit, int xFinal, int yFinal){
 
+        System.out.println(xInit +":"+yInit+":"+xFinal+":"+yFinal);
+
         boolean moved = false;
 
         if(echiquier.isMoveOk(xInit,yInit,xFinal,yFinal)){

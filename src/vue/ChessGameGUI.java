@@ -1,8 +1,6 @@
 package vue;
 
 import controler.ChessGameControlers;
-import controler.controlerLocal.ChessGameControler;
-import model.ChessGame;
 import model.Coord;
 import model.Couleur;
 import model.PieceIHM;
@@ -10,13 +8,10 @@ import tools.ChessImageProvider;
 import tools.ObserverObservable.ObserverCustom;
 
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.util.*;
 import java.util.List;
 
 /**
@@ -96,6 +91,7 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
         if(chessPiece == null) return;
 
         chessPiece.setVisible(false);
+        layeredPane.remove(chessPiece);
 
         controler.move(memoChessPiece, new Coord(e.getX() / 75, e.getY() / 75));
 
@@ -122,7 +118,6 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
             JPanel panel = (JPanel) chessBoard.getComponent(i);
             panel.removeAll();
         }
-
         for(PieceIHM piece : listPieces){
             String name = piece.getTypePiece();
             Couleur couleur = piece.getCouleur();
@@ -132,7 +127,8 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
                 panel.add(pieceIHM);
             }
         }
-        chessBoard.revalidate();
+        chessBoard.updateUI();
+        //chessBoard.repaint();
     }
 
 

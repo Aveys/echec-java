@@ -4,44 +4,40 @@ import controler.ChessGameControlers;
 import model.ChessGame;
 import model.Coord;
 import model.Couleur;
-import network.AcceptConnection;
-import network.Reception;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.util.Scanner;
 
 /**
  * Created by arthurveys on 04/11/15 for ProjetDP2.
  */
-public class ChessGameControler implements ChessGameControlers{
+public class ChessGameControler implements ChessGameControlers,Runnable{
 
 	private ChessGame game ;
 	private Socket socket;
-	public ChessGameControler(ChessGame game, Socket socket) {
+    private BufferedReader in;
+    private Couleur couleur;
+    
+
+	public ChessGameControler(ChessGame game, Socket socket,BufferedReader in,Couleur couleur) {
 
 		this.game = game;
 		this.socket = socket;
+        this.in = in;
+        this.couleur = couleur;
 
-		BufferedReader in = null;
-		try {
-			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-
-			Scanner sc = new Scanner(System.in);
-
-			Thread t3 = new Thread(new Reception(in,this));
-			t3.start();
-		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 
 	@Override
 	public boolean move(Coord initCoord, Coord finalCoord) {
+
+        if (game.getColorCurrentPlayer() != couleur){
+            System.out.println("Ce n'est pas ton jeu!");
+            game.init();
+            return false;
+        }
 
 		Boolean moved = game.move(initCoord.x,initCoord.y,finalCoord.x,finalCoord.y);
 		System.out.println(game.getMessage());
@@ -87,4 +83,25 @@ public class ChessGameControler implements ChessGameControlers{
 
 		return initCoord.x +":"+initCoord.y+":"+finalCoord.x+":"+finalCoord.y;
 	}
+
+    @Override
+    public void run() {
+
+        while(true){
+            try {
+
+                String message = in.readLine();
+                System.out.println("Message reçu : " + message);
+                String[] splitString = message.split(":");
+
+                Coord initCoord=new Coord(Integer.parseInt(splitString[1]),Integer.parseInt(splitString[2]));
+                Coord finalCoord=new Coord(Integer.parseInt(splitString[3]),Integer.parseInt(splitString[4]));
+                this.moveNetwork(initCoord, finalCoord);
+
+            } catch (IOException e) {
+
+                e.printStackTrace();
+            }
+        }
+    }
 }

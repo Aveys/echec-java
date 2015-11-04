@@ -1,13 +1,18 @@
 package launcher;
 
-import network.AcceptConnection;
-import network.Connexion;
+import controler.controlerNetwork.ChessGameControler;
+import model.ChessGame;
+import model.Couleur;
+import vue.ChessGameGUI;
 
 import javax.swing.*;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.Scanner;
 
 /**
  * Created by arthurveys on 04/11/15 for ProjetDP2.
@@ -28,14 +33,18 @@ public class LauncherGUINetwork {
 				JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
 				null, options, options[0]);
 		if(info == 0){
+
 			try {
 				ss = new ServerSocket(2009);
-				System.out.println("Le serveur est ‡ l'Ècoute du port "+ss.getLocalPort());
+				System.out.println("Le serveur est √† l'√©coute du port "+ss.getLocalPort());
 
-				new AcceptConnection(ss);
+				socket = ss.accept();
+				System.out.println("Un joueur s'est connect√©");
+				initGame(socket,Couleur.BLANC);
+
 
 			} catch (IOException e) {
-				System.err.println("Le port est dÈj‡ utilisÈ !");
+				System.err.println("Le port est d√©j√† utilis√© !");
 			}
 
 		}
@@ -44,17 +53,43 @@ public class LauncherGUINetwork {
 
 				System.out.println("Demande de connexion");
 				socket = new Socket("127.0.0.1",2009);
-				System.out.println("Connexion Ètablie avec le serveur, authentification :"); // Si le message s'affiche c'est que je suis connectÈ
+				System.out.println("Connexion √©tablie avec le serveur, authentification :"); // Si le message s'affiche c'est que je suis connect√©
 
-				new Connexion(socket);
+				initGame(socket,Couleur.NOIR);
 
 			} catch (UnknownHostException e) {
-				System.err.println("Impossible de se connecter ‡ l'adresse ");
+				System.err.println("Impossible de se connecter √† l'adresse ");
 			} catch (IOException e) {
-				System.err.println("Aucun serveur ‡ l'Ècoute du port ");
+				System.err.println("Aucun serveur √† l'√©coute du port ");
 			}
 		}
 
 		//new ChessGameCmdLine(chessGameControler);
+	}
+
+	public static void initGame(Socket socket, Couleur couleur){
+		try {
+			ChessGame chessGame;
+			ChessGameGUI chessGameGUI;
+			ChessGameControler chessGameControler;
+			chessGame = new ChessGame();
+			BufferedReader in = null;
+			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			Scanner sc = new Scanner(System.in);
+
+			chessGameControler = new ChessGameControler(chessGame, socket, in,couleur);
+
+			Thread t1 = new Thread(chessGameControler);
+			t1.start();
+
+			chessGameGUI = new ChessGameGUI(chessGameControler);
+			chessGameGUI.setTitle(couleur.toString());
+			chessGame.addObserver(chessGameGUI);
+			chessGameGUI.display();
+			chessGame.init();
+		} catch (IOException e) {
+		System.err.println("Le port est d√©j√† utilis√© !");
+	}
+
 	}
 }

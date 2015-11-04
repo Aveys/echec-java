@@ -23,11 +23,7 @@ public class LauncherGUI {
         chessGameGUI = new ChessGameGUI(chessGameControler);
         chessGame.addObserver(chessGameGUI);
 
-        chessGameGUI.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        chessGameGUI.pack();
-        chessGameGUI.setResizable(true);
-        chessGameGUI.setLocationRelativeTo( null );
-        chessGameGUI.setVisible(true);
+        chessGameGUI.display();
         chessGame.init();
 
         //new ChessGameCmdLine(chessGameControler);

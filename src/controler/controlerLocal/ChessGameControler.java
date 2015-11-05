@@ -6,6 +6,7 @@ import model.Coord;
 import model.Couleur;
 
 import javax.swing.*;
+import java.util.List;
 
 /**
  * Created by arthurveys on 02/11/15 for ProjetDP2.
@@ -41,6 +42,11 @@ public class ChessGameControler implements ChessGameControlers{
 	@Override
 	public Couleur getColorCurrentPlayer() {
 		return game.getColorCurrentPlayer();
+	}
+
+	@Override
+	public List<Coord> getListDep(Coord coord) {
+		return game.getListDep(coord.x,coord.y);
 	}
 
 	@Override

@@ -3,6 +3,9 @@ package controler;
 import model.Coord;
 import model.Couleur;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by arthurveys on 02/11/15 for ProjetDP2.
  */
@@ -33,4 +36,6 @@ public interface ChessGameControlers {
 	 * @return The color of the current player
 	 */
 	public Couleur getColorCurrentPlayer();
+
+	public List<Coord> getListDep(Coord coord);
 }

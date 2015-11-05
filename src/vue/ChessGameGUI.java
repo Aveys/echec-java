@@ -69,7 +69,18 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 
         memoChessPiece = new Coord(e.getX()/75,e.getY()/75);
 
+        List<Coord> list = controler.getListDep(memoChessPiece);
+
         Point parentLocation = c.getParent().getLocation();
+
+        for(Coord coord : list){
+            JPanel panel = (JPanel) chessBoard.getComponentAt(coord.x * 75, coord.y*75);
+            panel.setBorder(BorderFactory.createMatteBorder(
+                    2, 2, 2, 2, Color.red));
+        }
+
+
+
         xAdjustment = parentLocation.x - e.getX();
         yAdjustment = parentLocation.y - e.getY();
         chessPiece = (JLabel)c;
@@ -116,6 +127,7 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
         //Remove all the pieces of the board
         for (int i = 0; i<64; i++){
             JPanel panel = (JPanel) chessBoard.getComponent(i);
+            panel.setBorder(null);
             panel.removeAll();
         }
         for(PieceIHM piece : listPieces){

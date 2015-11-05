@@ -22,10 +22,12 @@ public class MasterLauncher {
                 break;
             case 0:
                 System.out.println("On lan");
+
+                LauncherGUINetwork launcherNet = new LauncherGUINetwork();
                 break;
             case 1:
                 System.out.println("Local");
-                LauncherGUI lancher = new LauncherGUI();
+                LauncherGUI launcherLocal = new LauncherGUI();
         }
     }
 }

@@ -19,7 +19,7 @@ import java.util.Scanner;
  */
 public class LauncherGUINetwork {
 
-	public static void main(String[] args) {
+	public LauncherGUINetwork() {
 
 		ServerSocket ss;
 		Socket socket;

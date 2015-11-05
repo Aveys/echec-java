@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.List;
 
 /**
  * Created by arthurveys on 04/11/15 for ProjetDP2.
@@ -83,6 +84,11 @@ public class ChessGameControler implements ChessGameControlers,Runnable{
 
 		return initCoord.x +":"+initCoord.y+":"+finalCoord.x+":"+finalCoord.y;
 	}
+
+    @Override
+    public List<Coord> getListDep(Coord coord) {
+        return game.getListDep(coord.x,coord.y);
+    }
 
     @Override
     public void run() {

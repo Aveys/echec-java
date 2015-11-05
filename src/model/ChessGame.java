@@ -3,6 +3,7 @@ package model;
 import tools.ObserverObservable.ObservableCustom;
 import tools.ObserverObservable.ObserverCustom;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
@@ -59,6 +60,21 @@ public class ChessGame extends ObservableCustom{
         return echiquier.getPiecesIHM();
     }
 
+    public List<Coord> getListDep(int xInit, int yInit){
+
+        List<Coord>  listCases = new ArrayList<>();
+        int x,y;
+
+        for(y=0;y<8;y++){
+            for(x=0;x<8;x++){
+                if(echiquier.isMoveOk(xInit,yInit,x,y)){
+                    listCases.add(new Coord(x,y));
+                }
+            }
+        }
+
+        return listCases;
+    }
 
     @Override
     public void notifyAllObserver() {

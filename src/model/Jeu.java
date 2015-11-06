@@ -1,9 +1,13 @@
 package model;
 
-import tools.ChessPieceFactory;
-
 import java.util.LinkedList;
 import java.util.List;
+
+import model.Coord;
+import model.Couleur;
+import tools.ChessPieceFactory;
+import tools.ChessSinglePieceFactory;
+import tools.Introspection;
 
 /**
  * @author francoise.perrin
@@ -282,6 +286,19 @@ public class Jeu  {
 
 	}
 
+	public boolean promotePiece(Coord coordPiece,String promotion){
+
+		Pieces piece = findPiece(coordPiece.x, coordPiece.y);
+
+		if(piece != null){
+
+			String className = "model." + promotion;
+			Pieces newPiece = (Pieces) Introspection.newInstance(className,new Object[]{piece.getName(), piece.getCouleur(), coordPiece});
+			pieces.remove(piece);
+			pieces.add(newPiece);
+		}
+		return true;
+	}
 
 	//	public static void main(String[] args) {
 	//		Jeu jeu = new Jeu(Couleur.BLANC);

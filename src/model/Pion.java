@@ -27,7 +27,7 @@ public class Pion extends AbstractPiece implements Pions {
 
 		if ((xFinal == this.getX())
 				&& (Math.abs(yFinal - this.getY()) <= 1 || 
-				(Math.abs(yFinal - this.getY()) <= 2 && this.premierCoup==true))) {
+				(Math.abs(yFinal - this.getY()) <= 2 && this.premierCoup))) {
 
 			if ((Couleur.NOIR.equals(this.getCouleur()) && (yFinal - this.getY() > 0))
 					|| (Couleur.BLANC.equals(this.getCouleur()) 

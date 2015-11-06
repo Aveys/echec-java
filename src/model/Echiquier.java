@@ -372,6 +372,11 @@ public class Echiquier {
 		return false;
 	}
 
+	public void promotePiece(int x, int y, String promotion){
+
+		jeuCourant.promotePiece(new Coord(x,y),promotion);
+	}
+
 
 	//	public static void main(String[] args) {
 	//		Echiquier e = new Echiquier();

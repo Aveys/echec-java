@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by arthurveys on 02/11/15 for ProjetDP2.
+ *Classe permettant de rendre observable le modèle
  */
 public class ChessGame extends ObservableCustom{
 
@@ -18,6 +18,16 @@ public class ChessGame extends ObservableCustom{
         this.echiquier = new Echiquier();
     }
 
+    /**
+     * Permet de déplacer une piéce connaissant ses coordonnées initiales vers ses
+     * coordonnées finales en vérifiant si le déplacement est possible puis change de joueur.
+     * @param xInit position initiale X
+     * @param yInit position initiale Y
+     * @param xFinal position finale X
+     * @param yFinal position finale Y
+     * @return true si le déplacement est effectué, false sinon
+     *
+     */
     public boolean move (int xInit, int yInit, int xFinal, int yFinal){
 
         System.out.println(xInit +":"+yInit+":"+xFinal+":"+yFinal);
@@ -35,6 +45,9 @@ public class ChessGame extends ObservableCustom{
         return moved;
     }
 
+    /***
+     * Notifie les observer pour qu'ils initialisent leur données
+     */
     public void init(){
         this.notifyAllObserver();
     }
@@ -43,10 +56,18 @@ public class ChessGame extends ObservableCustom{
         return echiquier.isEnd();
     }
 
+    /***
+     * Message de l'échiquier suite à une action sur celui-ci
+     * @return Message de l'échiquier
+     */
     public String getMessage(){
         return echiquier.getMessage();
     }
 
+    /***
+     * Couleur du joueur courant
+     * @return couleur (BLANC/NOIR)
+     */
     public Couleur getColorCurrentPlayer(){
         return echiquier.getColorCurrentPlayer();
     }
@@ -55,10 +76,20 @@ public class ChessGame extends ObservableCustom{
         return echiquier.toString();
     }
 
+    /***
+     * Liste les pieces disponibles du plateau
+     * @return liste de pieces
+     */
     public List<PieceIHM> getPiecesIHM(){
         return echiquier.getPiecesIHM();
     }
 
+    /***
+     * Liste les déplacements qu'une pièce peut effectuer
+     * @param xInit position de départ X
+     * @param yInit position de départ Y
+     * @return Liste de coordonnées possibles
+     */
     public List<Coord> getListDep(int xInit, int yInit){
 
         List<Coord>  listCases = new ArrayList<>();
@@ -73,6 +104,17 @@ public class ChessGame extends ObservableCustom{
         }
 
         return listCases;
+    }
+
+    /***
+     * Transforme une piece en une autre
+     * @param x position X de la piece
+     * @param y position Y de la piece
+     * @param promotion Type de piece à promouvoir
+     */
+    public void promotePiece(int x, int y, String promotion){
+
+        echiquier.promotePiece(x,y,promotion);
     }
 
     @Override

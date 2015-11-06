@@ -100,5 +100,5 @@ public abstract class AbstractPiece implements Pieces {
 	 */
 	public abstract boolean isMoveOk(int xFinal, int yFinal) ;
 
-};
+}
 

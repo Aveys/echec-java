@@ -3,7 +3,6 @@ package controler;
 import model.Coord;
 import model.Couleur;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,25 +16,25 @@ public interface ChessGameControlers {
 	 * @param finalCoord final coord
 	 * @return True if movement correct and executed, false if failed
 	 */
-	public boolean move(Coord initCoord, Coord finalCoord);
+	boolean move(Coord initCoord, Coord finalCoord);
 
 	/**
 	 * Return message from the move
 	 * @return
 	 */
-	public String getMessage();
+	String getMessage();
 
 	/**
 	 * check if game is finished
 	 * @return true if game is finished, false otherwise
 	 */
-	public boolean isEnd();
+	boolean isEnd();
 
 	/**
 	 * return the color of the current player
 	 * @return The color of the current player
 	 */
-	public Couleur getColorCurrentPlayer();
+	Couleur getColorCurrentPlayer();
 
-	public List<Coord> getListDep(Coord coord);
+	List<Coord> getListDep(Coord coord);
 }

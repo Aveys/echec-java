@@ -93,7 +93,8 @@ public class ChessGameControler implements ChessGameControlers,Runnable{
     @Override
     public void run() {
 
-        while(true){
+	    //noinspection InfiniteLoopStatement
+	    while(true){
             try {
 
                 String message = in.readLine();

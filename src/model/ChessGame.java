@@ -5,7 +5,6 @@ import tools.ObserverObservable.ObserverCustom;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 
 /**
  * Created by arthurveys on 02/11/15 for ProjetDP2.

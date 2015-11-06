@@ -5,7 +5,6 @@ import model.ChessGame;
 import model.Coord;
 import model.Couleur;
 
-import javax.swing.*;
 import java.util.List;
 
 /**

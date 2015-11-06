@@ -6,5 +6,5 @@ package model;
  * Interface sp�cifique aux d�placements des pions
  */
 public interface Pions {
-	public boolean isMoveDiagOk(int xFinal,	int yFinal);
+	boolean isMoveDiagOk(int xFinal, int yFinal);
 }

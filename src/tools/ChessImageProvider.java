@@ -1,10 +1,11 @@
 package tools;
 
+import model.Couleur;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import model.Couleur;
 
 /**
  * @author francoise.perrin

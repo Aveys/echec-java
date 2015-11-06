@@ -1,8 +1,8 @@
 package launcher;
 
+import controler.controlerLocal.ChessGameControler;
 import model.ChessGame;
 import vue.ChessGameCmdLine;
-import controler.controlerLocal.ChessGameControler;
 
 
 /**

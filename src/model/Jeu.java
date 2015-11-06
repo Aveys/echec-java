@@ -1,12 +1,9 @@
 package model;
 
+import tools.ChessPieceFactory;
+
 import java.util.LinkedList;
 import java.util.List;
-
-import model.Coord;
-import model.Couleur;
-import tools.ChessPieceFactory;
-import tools.ChessSinglePieceFactory;
 
 /**
  * @author francoise.perrin
@@ -98,10 +95,7 @@ public class Jeu  {
 			// diagonale du pion  et
 			// s'il existe une pièce d'une autre couleur à prendre aux coordonnées finales
 			if( isPieceToCatch) {
-				isMoveOk = false;
-				if (pion.isMoveDiagOk(xFinal, yFinal)) {
-					isMoveOk = true;					
-				}
+				isMoveOk = pion.isMoveDiagOk(xFinal, yFinal);
 				if (!isMoveOk ){
 					isPieceToCatch = false;
 				}

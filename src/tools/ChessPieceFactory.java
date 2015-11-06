@@ -1,11 +1,11 @@
 package tools;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import model.Coord;
 import model.Couleur;
 import model.Pieces;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * @author francoise.perrin

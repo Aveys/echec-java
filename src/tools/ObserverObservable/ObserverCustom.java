@@ -9,6 +9,6 @@ import java.util.List;
  */
 public interface ObserverCustom {
 
-    public void update(List<PieceIHM> listPieces);
+    void update(List<PieceIHM> listPieces);
 
 }

@@ -33,7 +33,7 @@ public class LauncherGUINetwork {
 
 		Object[] options = { "Serveur", "Client" };
 
-		int info = JOptionPane.showOptionDialog(null, "Jouer en tant que serveur (Blanc) ou client(noir) ?", "Info",
+		int info = JOptionPane.showOptionDialog(null, "Jouer en tant que serveur (Blanc) ou client(noir) ? \u2654", "Info",
 				JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE,
 				null, options, options[0]);
 		if(info == 0){

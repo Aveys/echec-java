@@ -53,9 +53,9 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 
             int row = (i / 8) % 2;
             if (row == 0)
-                square.setBackground( i % 2 == 0 ? Color.black : Color.white );
+                square.setBackground( i % 2 == 0 ? Color.lightGray : Color.white );
             else
-                square.setBackground( i % 2 == 0 ? Color.white : Color.black );
+                square.setBackground( i % 2 == 0 ? Color.white : Color.lightGray );
         }
 
     }
@@ -134,9 +134,10 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
             String name = piece.getTypePiece();
             Couleur couleur = piece.getCouleur();
             for (Coord coordo : piece.getList()){
-                JLabel pieceIHM = new JLabel(new ImageIcon(ChessImageProvider.getImageFile(name,couleur)));
+                JLabel pieceIHM = new JLabel(ChessImageProvider.getUnicodeString(name,couleur),SwingConstants.CENTER);
+                pieceIHM.setFont(new Font("Serif", Font.PLAIN, 60));
                 JPanel panel = (JPanel) chessBoard.findComponentAt((coordo.x * 75), (coordo.y * 75));
-                panel.add(pieceIHM);
+                panel.add(pieceIHM, BorderLayout.CENTER);
             }
         }
         chessBoard.updateUI();

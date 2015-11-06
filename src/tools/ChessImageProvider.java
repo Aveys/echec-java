@@ -33,7 +33,7 @@ public class ChessImageProvider {
 	}
 
 	/**
-	 * private pour ne pas instancier d'objets
+	 * private pour ne pas instancier d'objets dd
 	 */
 	private ChessImageProvider() {
 

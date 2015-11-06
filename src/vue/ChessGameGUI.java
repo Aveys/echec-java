@@ -31,18 +31,7 @@ public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionLi
 	Font fontUnicode;
 
 	public ChessGameGUI(ChessGameControlers controler) {
-
-		File f = new File("font/DejaVuSans.ttf");
-		System.out.println("Exist font ? "+f.exists());
-		try {
-			fontUnicode = Font.createFont(Font.TRUETYPE_FONT, f);
-		} catch (FontFormatException | IOException e) {
-			System.out.println("WARN - Impossible de charger la font : "+f.getAbsolutePath());
-			this.fontUnicode = new Font("Arial Unicode MS", Font.PLAIN, 60);
-			e.printStackTrace();
-		}
-		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		ge.registerFont(fontUnicode);
+		this.fontUnicode = new Font("Arial",Font.PLAIN,60);
 
 		this.controler = controler;
 

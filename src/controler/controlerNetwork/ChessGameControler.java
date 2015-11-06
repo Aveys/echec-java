@@ -20,7 +20,6 @@ public class ChessGameControler implements ChessGameControlers,Runnable{
 	private Socket socket;
     private BufferedReader in;
     private Couleur couleur;
-    
 
 	public ChessGameControler(ChessGame game, Socket socket,BufferedReader in,Couleur couleur) {
 

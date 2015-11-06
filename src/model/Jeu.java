@@ -43,8 +43,8 @@ public class Jeu  {
 
 	
 	/**
-	 * Le constructeur de jeu fait appel � la fabrique de pi�ces
-	 * @param couleur
+	 * Le constructeur de jeu fait appel à la fabrique de pieces
+	 * @param couleur couleur de la piece
 	 * 
 	 */
 	public Jeu(Couleur couleur){
@@ -55,8 +55,8 @@ public class Jeu  {
 
 
 	/**
-	 * @param x
-	 * @param y
+	 * @param x position X
+	 * @param y position Y
 	 * @return true si une pièce se trouve aux coordonnées indiquées
 	 */
 	public boolean isPieceHere(int x, int y) {
@@ -69,16 +69,16 @@ public class Jeu  {
 	}
 
 	/**
-	 * @param xInit
-	 * @param yInit
-	 * @param xFinal
-	 * @param yFinal
+	 * @param xInit position X initiale
+	 * @param yInit position Y initiale
+	 * @param xFinal position X finale
+	 * @param yFinal position Y finale
 	 * @return true si  piece du jeu peut être déplacée aux coordonnées finales,
 	 *  false sinon
 	 */
 	public boolean isMoveOk(int xInit, int yInit, int xFinal, int yFinal){
 
-		Pieces pieceToMove = null;
+		Pieces pieceToMove;
 		isLastPion = false;
 		isMoveOk = false;
 	
@@ -114,15 +114,15 @@ public class Jeu  {
 	}
 
 	/**
-	 * @param xInit
-	 * @param yInit
-	 * @param xFinal
-	 * @param yFinal
+	 * @param xInit position X initiale
+	 * @param yInit position Y initiale
+	 * @param xFinal position X finale
+	 * @param yFinal position Y finale
 	 * @return true si déplacement pièce effectué
 	 */
 	public boolean move(int xInit, int yInit, int xFinal, int yFinal) {
 		boolean ret = false;
-		Pieces pieceToMove = null;
+		Pieces pieceToMove;
 
 		pieceToMove = this.findPiece(xInit, yInit);
 		if (pieceToMove!=null){
@@ -150,13 +150,13 @@ public class Jeu  {
 	}
 
 	/**
-	 * @param xCatch
-	 * @param yCatch
+	 * @param xCatch position X à prendre
+	 * @param yCatch position y à prendre
 	 * @return true si la piece aux coordonnées finales
 	 * a été capturée
 	 */
 	public boolean capture(int xCatch, int yCatch) {
-		boolean ret = false;
+		boolean ret;
 		Pieces pieceToCatch;
 
 		pieceToCatch = this.findPiece(xCatch, yCatch);
@@ -192,9 +192,9 @@ public class Jeu  {
 
 
 	/**
-	 * @param x
-	 * @param y
-	 * @return nom de la pi�ce aux coordonn�es x,y
+	 * @param x position X
+	 * @param y position Y
+	 * @return nom de la pièce aux coordonnées x,y
 	 */
 	public String getPieceName(int x, int y) {
 		String ret = null;
@@ -206,10 +206,10 @@ public class Jeu  {
 	}
 
 	/**
-	 * @param x
-	 * @param y
-	 * @return type de la pi�ce aux coordonn�es x,y
-	 * c'est � dire le nom de la classe : 
+	 * @param x position X
+	 * @param y position Y
+	 * @return type de la pièce aux coordonnées x,y
+	 * c'est à dire le nom de la classe :
 	 * maPiece.getClass().getSimpleName();
 	 */
 	public String getPieceType(int x, int y) {
@@ -233,8 +233,8 @@ public class Jeu  {
 	 * (type piece + couleur + coordonnées)
 	 */
 	public List<PieceIHM> getPiecesIHM(){
-		PieceIHM newPieceIHM = null;
-		List<PieceIHM> list = new LinkedList<PieceIHM>();
+		PieceIHM newPieceIHM;
+		List<PieceIHM> list = new LinkedList<>();
 		
 		for (Pieces piece : pieces){
 			boolean existe = false;
@@ -263,9 +263,9 @@ public class Jeu  {
 
 
 	/**
-	 * @param x
-	 * @param y
-	 * @return la r�f�rence vers la pi�ce cherch�e, null sinon
+	 * @param x position X
+	 * @param y position Y
+	 * @return la référence vers la piéce cherchée, null sinon
 	 */
 	private Pieces findPiece(int x, int y){
 		Pieces pieceToFind = null;
@@ -286,7 +286,7 @@ public class Jeu  {
 
 	}
 
-	public boolean promotePiece(Coord coordPiece,String promotion){
+	public void promotePiece(Coord coordPiece,String promotion){
 
 		Pieces piece = findPiece(coordPiece.x, coordPiece.y);
 
@@ -297,7 +297,6 @@ public class Jeu  {
 			pieces.remove(piece);
 			pieces.add(newPiece);
 		}
-		return true;
 	}
 
 	//	public static void main(String[] args) {

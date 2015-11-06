@@ -8,7 +8,7 @@ import javax.swing.*;
 
 
 /**
- * Created by lbl on 02/11/2015.
+ * Launcher du mode local
  */
 public class LauncherGUI {
 

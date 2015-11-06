@@ -15,7 +15,7 @@ import java.net.UnknownHostException;
 import java.util.Scanner;
 
 /**
- * Created by arthurveys on 04/11/15 for ProjetDP2.
+ * Launcher du mode On lan
  */
 public class LauncherGUINetwork {
 
@@ -77,7 +77,7 @@ public class LauncherGUINetwork {
 			ChessGameGUI chessGameGUI;
 			ChessGameControler chessGameControler;
 			chessGame = new ChessGame();
-			BufferedReader in = null;
+			BufferedReader in;
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			Scanner sc = new Scanner(System.in);
 

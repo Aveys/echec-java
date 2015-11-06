@@ -16,9 +16,9 @@ public abstract class AbstractPiece implements Pieces {
 
 
 	/**
-	 * @param name
-	 * @param couleur
-	 * @param coord
+	 * @param name nom de la piece
+	 * @param couleur couleur de la piece (NOIR/BLANC)
+	 * @param coord coordonnées de la piece
 	 */
 	public AbstractPiece(String name, Couleur couleur, Coord coord){
 		this.name = name;
@@ -80,8 +80,7 @@ public abstract class AbstractPiece implements Pieces {
 	 * @see java.lang.Object#toString()
 	 */
 	public String toString(){
-		String S=getName();
-		return S;
+		return getName();
 	}
 
 

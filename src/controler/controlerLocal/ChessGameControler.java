@@ -8,7 +8,7 @@ import model.Couleur;
 import java.util.List;
 
 /**
- * Created by arthurveys on 02/11/15 for ProjetDP2.
+ * Controller local de l'échiquier
  */
 
 

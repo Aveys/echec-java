@@ -3,7 +3,7 @@ package launcher;
 import javax.swing.*;
 
 /**
- * Created by lbl on 04/11/2015.
+ * Main du jeu, permet de lancer soit le mode local, soit le mode on lan
  */
 public class MasterLauncher {
 
@@ -18,16 +18,16 @@ public class MasterLauncher {
 
         switch (result) {
             case -1:
-                System.out.println("Fermeture du jeu, aucun choix de mode n'a été sélectionné");
+                System.out.println("Fermeture du jeu, aucun choix de mode n'a Ã©tÃ© sÃ©lectionnÃ©");
                 break;
             case 0:
                 System.out.println("On lan");
 
-                LauncherGUINetwork launcherNet = new LauncherGUINetwork();
+                new LauncherGUINetwork();
                 break;
             case 1:
                 System.out.println("Local");
-                LauncherGUI launcherLocal = new LauncherGUI();
+                new LauncherGUI();
         }
     }
 }

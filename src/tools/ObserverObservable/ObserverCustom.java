@@ -5,7 +5,7 @@ import model.PieceIHM;
 import java.util.List;
 
 /**
- * Created by lbl on 04/11/2015.
+ * Interface permettant d'implémenter le pattern Observer/Observable
  */
 public interface ObserverCustom {
 

@@ -25,13 +25,13 @@ public class ChessPieceFactory {
 	}
 
 	/**
-	 * @param pieceCouleur
-	 * @return liste de pi�ces de jeu d'�chec
+	 * @param pieceCouleur couleur de la piece
+	 * @return liste de pieces de jeu d'echec
 	 */
 	public static List<Pieces> newPieces(Couleur pieceCouleur){
 
-		List<Pieces> pieces = null;
-		pieces = new LinkedList<Pieces>();
+		List<Pieces> pieces;
+		pieces = new LinkedList<>();
 		String initCouleur = (Couleur.BLANC == pieceCouleur ? "B_" : "N_" );
 
 		if (pieceCouleur != null){
@@ -55,7 +55,7 @@ public class ChessPieceFactory {
 
 	/**
 	 * Tests unitaires
-	 * @param args
+	 * @param args argument de test
 	 */
 	public static void main(String[] args) {
 		System.out.println(ChessPieceFactory.newPieces(Couleur.BLANC));

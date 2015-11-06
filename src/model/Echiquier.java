@@ -67,7 +67,7 @@ public class Echiquier {
 	 * qui pourra être exploitée par une IHM
 	 */
 	public List<PieceIHM> getPiecesIHM(){
-		List<PieceIHM> list = new LinkedList<PieceIHM>();
+		List<PieceIHM> list = new LinkedList<>();
 		list.addAll(this.jeuBlanc.getPiecesIHM());
 		list.addAll(this.jeuNoir.getPiecesIHM());
 		return list;
@@ -85,10 +85,10 @@ public class Echiquier {
 	 * 			sinon  :	prendre la piéce intermédiaire (vigilance pour le cas du pion)
 	 * 			 			et déplacer la piéce -->true,<br>
 	 * 		sinon déplacer la piéce -->true</p>
-	 * @param xInit position initiale
-	 * @param yInit
-	 * @param xFinal
-	 * @param yFinal
+	 * @param xInit position X initiale
+	 * @param yInit position Y initiale
+	 * @param xFinal position X finale
+	 * @param yFinal position Y finale
 	 * @return true si le déplacement est effectué, false sinon
 	 * 
 	 */
@@ -115,7 +115,7 @@ public class Echiquier {
 	private boolean isMoveLegal(int xInit, int yInit, int xFinal, int yFinal) {
 
 		boolean isPieceOnPath = false;
-		Coord coordPieceInter = null;
+		Coord coordPieceInter;
 
 		this.isCatchOk = false;
 		this.isMoveOk = false;
@@ -159,10 +159,10 @@ public class Echiquier {
 	 * l'algo vérifie que le déplacement est légal, 
 	 * effectue ce déplacement avec l'éventuelle capture,
 	 * rembobine si le déplacement et la capture ont mis le roi en échec
-	 * @param xInit position initiale
-	 * @param yInit
-	 * @param xFinal
-	 * @param yFinal
+	 * @param xInit position X initiale
+	 * @param yInit position Y initiale
+	 * @param xFinal position X finale
+	 * @param yFinal position Y finale
 	 * @return true si le déplacement est effectué, false sinon
 	 * 
 	 */
@@ -199,10 +199,10 @@ public class Echiquier {
 	/**
 	 * Permet de vérifier s'il existe une piece sur la trajectoire
 	 * et retourne ses coordonnées si oui.
-	 * @param xInit
-	 * @param yInit
-	 * @param xFinal
-	 * @param yFinal
+	 * @param xInit position X initiale
+	 * @param yInit position Y initiale
+	 * @param xFinal position X finale
+	 * @param yFinal position Y finale
 	 * @return coordonnées de la 1ére piece intermédiaire rencontrée
 	 * aprés scan dans toutes les directions
 	 */

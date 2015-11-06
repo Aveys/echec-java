@@ -15,7 +15,7 @@ import java.awt.event.MouseMotionListener;
 import java.util.List;
 
 /**
- * Created by lbl on 02/11/2015.
+ * Vue de l'échiquier
  */
 public class ChessGameGUI extends JFrame implements MouseListener, MouseMotionListener,ObserverCustom {
 

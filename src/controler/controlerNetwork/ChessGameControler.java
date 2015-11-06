@@ -12,7 +12,7 @@ import java.net.Socket;
 import java.util.List;
 
 /**
- * Created by arthurveys on 04/11/15 for ProjetDP2.
+ * Controller on lan de l'échiquier
  */
 public class ChessGameControler implements ChessGameControlers,Runnable{
 

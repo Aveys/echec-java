@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by lbl on 04/11/2015.
+ * Class permettant d'implémenter le pattern Observer/Observable
  */
 public abstract class ObservableCustom {
 

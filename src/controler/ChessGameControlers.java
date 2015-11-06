@@ -6,7 +6,7 @@ import model.Couleur;
 import java.util.List;
 
 /**
- * Created by arthurveys on 02/11/15 for ProjetDP2.
+ * Controller de l'échiquier
  */
 public interface ChessGameControlers {
 
@@ -20,7 +20,7 @@ public interface ChessGameControlers {
 
 	/**
 	 * Return message from the move
-	 * @return
+	 * @return Message de l'échiquier
 	 */
 	String getMessage();
 

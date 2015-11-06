@@ -11,10 +11,9 @@ public class MasterLauncher {
 
         JFrame frame = new JFrame();
 
-        Icon blueIcon = new ImageIcon("yourFile.gif");
         Object stringArray[] = { "On lan", "Local" };
         int result = JOptionPane.showOptionDialog(frame, "Quel mode voulez-vous jouer ?", "Option de jeu",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, blueIcon, stringArray, stringArray[0]);
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, stringArray, stringArray[0]);
 
         switch (result) {
             case -1:

@@ -38,6 +38,35 @@ public class ChessGame extends ObservableCustom{
             moved = echiquier.move(xInit,yInit,xFinal,yFinal);
         }
 
+        this.notifyAllObserver();
+
+        return moved;
+    }
+
+    public void switchJoueur(){
+        echiquier.switchJoueur();
+    }
+
+    /**
+     * Permet de déplacer une piéce connaissant ses coordonnées initiales vers ses
+     * coordonnées finales en vérifiant si le déplacement est possible puis change de joueur.
+     * @param xInit position initiale X
+     * @param yInit position initiale Y
+     * @param xFinal position finale X
+     * @param yFinal position finale Y
+     * @return true si le déplacement est effectué, false sinon
+     *
+     */
+    public boolean moveNetwork (int xInit, int yInit, int xFinal, int yFinal){
+
+        System.out.println(xInit +":"+yInit+":"+xFinal+":"+yFinal);
+
+        boolean moved = false;
+
+        if(echiquier.isMoveOk(xInit,yInit,xFinal,yFinal)){
+            moved = echiquier.move(xInit,yInit,xFinal,yFinal);
+        }
+
         if(moved) echiquier.switchJoueur();
 
         this.notifyAllObserver();
@@ -45,10 +74,11 @@ public class ChessGame extends ObservableCustom{
         return moved;
     }
 
+
     /***
      * Notifie les observer pour qu'ils initialisent leur données
      */
-    public void init(){
+    public void refresh(){
         this.notifyAllObserver();
     }
 
@@ -104,6 +134,10 @@ public class ChessGame extends ObservableCustom{
         }
 
         return listCases;
+    }
+
+    public boolean isPromotable(Coord coord){
+        return echiquier.isPromotable(coord);
     }
 
     /***

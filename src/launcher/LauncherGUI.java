@@ -29,7 +29,7 @@ public class LauncherGUI {
         chessGame.addObserver(chessGameGUI);
 
         chessGameGUI.display();
-        chessGame.init();
+        chessGame.refresh();
 
         //new ChessGameCmdLine(chessGameControler);
     }

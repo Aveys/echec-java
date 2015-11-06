@@ -90,7 +90,7 @@ public class LauncherGUINetwork {
 			chessGameGUI.setTitle(couleur.toString());
 			chessGame.addObserver(chessGameGUI);
 			chessGameGUI.display();
-			chessGame.init();
+			chessGame.refresh();
 		} catch (IOException e) {
 		System.err.println("Le port est déjà utilisé !");
 	}

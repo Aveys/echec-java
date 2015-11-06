@@ -299,6 +299,14 @@ public class Jeu  {
 		}
 	}
 
+	public boolean isPromotable(Coord coordPiece){
+		Pieces piece = findPiece(coordPiece.x, coordPiece.y);
+		boolean promotable = false;
+		if(piece instanceof Pion && (coordPiece.y == 0 || coordPiece.y == 7)) promotable = true;
+
+		return promotable;
+	}
+
 	//	public static void main(String[] args) {
 	//		Jeu jeu = new Jeu(Couleur.BLANC);
 	//		System.out.println(jeu);

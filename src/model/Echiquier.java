@@ -373,8 +373,21 @@ public class Echiquier {
 	}
 
 	public void promotePiece(int x, int y, String promotion){
+		if(y == 0){
+			jeuBlanc.promotePiece(new Coord(x, y), promotion);
+		}
+		else{
+			jeuNoir.promotePiece(new Coord(x, y), promotion);
+		}
+	}
 
-		jeuCourant.promotePiece(new Coord(x,y),promotion);
+	public boolean isPromotable(Coord coord){
+		if(coord.y == 0){
+			return jeuBlanc.isPromotable(coord);
+		}
+		else{
+			return jeuNoir.isPromotable(coord);
+		}
 	}
 
 

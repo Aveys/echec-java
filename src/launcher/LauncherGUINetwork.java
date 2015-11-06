@@ -23,7 +23,11 @@ public class LauncherGUINetwork {
 
 		ServerSocket ss;
 		Socket socket;
-
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+			e.printStackTrace();
+		}
 
 
 

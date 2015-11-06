@@ -4,6 +4,8 @@ import controler.controlerLocal.ChessGameControler;
 import model.ChessGame;
 import vue.ChessGameGUI;
 
+import javax.swing.*;
+
 
 /**
  * Created by lbl on 02/11/2015.
@@ -12,7 +14,11 @@ public class LauncherGUI {
 
     public LauncherGUI() {
 
-
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
         ChessGame chessGame;
         ChessGameGUI chessGameGUI;
         ChessGameControler chessGameControler;
